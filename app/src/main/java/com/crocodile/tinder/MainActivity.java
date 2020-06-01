@@ -4,13 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
+
+    final String URLCOMANDER = "http://178.128.242.32/test";
 
     private TextView policyTextView;
     private Button buttonStart;
@@ -59,14 +68,34 @@ public class MainActivity extends AppCompatActivity {
     private void startWork() {
     pref = new Pref(getApplicationContext());
     if (pref.getModer()) startTinder();
-    else startWebView();
+    else {
+        try {
+            startWebView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     }
 
     private void startTinder() {
 
     }
 
-    private void startWebView() {
+    private void startWebView() throws IOException {
+        new AsyncTask<Object, Object, Object>() {
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                Document doc = null;
+                try {
+                    doc = Jsoup.connect(URLCOMANDER).get();
+                    String link = doc.wholeText();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+        }.execute();
 
     }
 }
