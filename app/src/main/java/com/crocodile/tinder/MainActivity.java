@@ -1,12 +1,15 @@
 package com.crocodile.tinder;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,9 +20,7 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
-
-    final String URLCOMANDER = "http://178.128.242.32/test";
+public class MainActivity extends AppCompatActivity implements ResponseJsoup{
 
     private TextView policyTextView;
     private Button buttonStart;
@@ -82,20 +83,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startWebView() throws IOException {
-        new AsyncTask<Object, Object, Object>() {
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                Document doc = null;
-                try {
-                    doc = Jsoup.connect(URLCOMANDER).get();
-                    String link = doc.wholeText();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+       new JsoupResponse(this).execute();
+    }
 
-                return null;
-            }
-        }.execute();
+    @Override
+    public void response(String link) {
 
     }
 }
