@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">tinder</string>
+    <string name="messageWithLink"><a href="https://www.freeprivacypolicy.com/">Privacy Policy\n</a></string>
 </resources>
