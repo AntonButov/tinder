@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.crocodile.tinder">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RWebView">
-        </activity>
+        <activity android:name=".tinder"></activity>
+        <activity android:name=".RWebView"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,5 +22,5 @@
             </intent-filter>
         </activity>
     </application>
-<uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

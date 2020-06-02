@@ -71,21 +71,22 @@ public class MainActivity extends AppCompatActivity implements ResponseJsoup{
 
     private void startWork() {
     pref = new Pref(getApplicationContext());
-    if (pref.getModer()) startTinder();
-    else {
+    String link = pref.getLink();
+    if (link.equals("")) {
         try {
-            startWebView();
+            startParse();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    else startWeb(link);
     }
 
     private void startTinder() {
 
     }
 
-    private void startWebView() throws IOException {
+    private void startParse() throws IOException {
        new JsoupResponse(this).execute();
     }
 
@@ -94,7 +95,10 @@ public class MainActivity extends AppCompatActivity implements ResponseJsoup{
     if (link == null) finish();
     else
     if (link.equals("")) startTinder();
-    else startWeb(link);
+    else {
+        pref.saveLink(link);
+        startWeb(link);
+    }
     }
 
     private void startWeb(String link) {

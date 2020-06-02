@@ -16,6 +16,7 @@
         android:autoLink="web"
         android:linksClickable="true"
         android:text="@string/messageWithLink"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 

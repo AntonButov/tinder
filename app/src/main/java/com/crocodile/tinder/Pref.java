@@ -12,14 +12,14 @@ public Pref(Context context) {
     msharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 }
 
-public void saveModer() {
+public void saveLink(String link) {
     SharedPreferences.Editor editor = msharedPreferences.edit();
-    editor.putBoolean("ok",true);
+    editor.putString("link",link);
     editor.commit();
 }
 
-public Boolean getModer() {
-   return msharedPreferences.getBoolean("ok",false);
+public String getLink() {
+   return msharedPreferences.getString("link","");
 }
 
 }
