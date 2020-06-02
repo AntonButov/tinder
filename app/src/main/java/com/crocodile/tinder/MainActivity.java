@@ -83,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements ResponseJsoup{
     }
 
     private void startTinder() {
-
+    Intent intent = new Intent(this,Tinder.class);
+    startActivity(intent);
     }
 
     private void startParse() throws IOException {

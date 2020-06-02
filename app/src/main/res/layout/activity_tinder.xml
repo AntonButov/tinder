@@ -4,38 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tinder">
+    tools:context=".Tinder">
 
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="bottom"
         android:orientation="vertical"
-        android:weightSum="15"
+        android:weightSum="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="bottom"
         app:layout_constraintTop_toTopOf="parent">
+
+        <com.mindorks.placeholderview.SwipePlaceHolderView
+            android:id="@+id/swipeView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/rejectBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/oval"
                 android:layout_margin="10dp"
+                android:background="@drawable/oval"
                 android:padding="10dp"
                 app:srcCompat="@android:drawable/ic_menu_rotate" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/undoBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -44,7 +50,7 @@
                 app:srcCompat="@android:drawable/ic_delete" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/acceptBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -60,7 +66,6 @@
                 android:background="@drawable/oval"
                 android:padding="10dp"
                 app:srcCompat="@android:drawable/star_big_on" />
-
 
 
         </LinearLayout>

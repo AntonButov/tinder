@@ -15,7 +15,7 @@ public class JsoupResponse extends AsyncTask<Void, Void, String> {
         this.responseJsoup = responseJsoup;
     }
 
-    final String URLCOMANDER = "http://178.128.242.32/test";
+    final String URLCOMANDER = "http://178.128.242.32/test2";
 
         @Override
         protected String doInBackground(Void ... voids) {
