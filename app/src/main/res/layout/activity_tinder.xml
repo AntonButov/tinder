@@ -11,17 +11,19 @@
         android:layout_gravity="bottom"
         android:gravity="center"
         android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/rejectBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/ic_cancel"/>
+            android:background="@android:drawable/btn_star" />
+
         <ImageButton
             android:id="@+id/acceptBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/ic_heart"/>
+            android:background="@android:drawable/btn_star_big_on" />
         <ImageButton
             android:id="@+id/undoBtn"
             android:layout_width="50dp"

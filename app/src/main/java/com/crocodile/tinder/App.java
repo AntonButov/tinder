@@ -2,6 +2,7 @@ package com.crocodile.tinder;
 
 import android.app.Application;
 
+import com.onesignal.OneSignal;
 import com.yandex.metrica.YandexMetrica;
 import com.yandex.metrica.YandexMetricaConfig;
 
@@ -18,6 +19,12 @@ public class App extends Application {
         YandexMetrica.activate(getApplicationContext(), config);
         // Automatic tracking of user activity.
         YandexMetrica.enableActivityAutoTracking(this);
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
     }
 }
 
