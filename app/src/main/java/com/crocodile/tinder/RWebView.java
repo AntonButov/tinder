@@ -26,9 +26,18 @@ public class RWebView extends AppCompatActivity {
 
         Intent intent = getIntent();
         link = intent.getStringExtra("link");
-        webView.loadUrl(link);
+        if (savedInstanceState == null)
+           webView.loadUrl(link);
+        else
+            webView.restoreState(savedInstanceState);
 
         MyWebViewClient webViewClient = new MyWebViewClient();
         webView.setWebViewClient(webViewClient);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        webView.saveState(outState);
     }
 }
