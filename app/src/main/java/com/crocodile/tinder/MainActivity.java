@@ -14,13 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements ResponseJsoup{
+
+    final String URLPOLITIC = "https://www.freeprivacypolicy.com/";
 
     private TextView policyTextView;
     private Button buttonStart;
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements ResponseJsoup{
         policyTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String urlPolic = "https://www.freeprivacypolicy.com/";
+                String urlPolic = URLPOLITIC;
                 Uri uri = Uri.parse(urlPolic);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 if (intent.resolveActivity(getPackageManager()) != null) {
@@ -88,7 +86,16 @@ public class MainActivity extends AppCompatActivity implements ResponseJsoup{
 
     @Override
     public void response(String link) {
+    if (link == null) finish();
+    else
+    if (link.equals("")) startTinder();
+    else startWeb(link);
+    }
 
+    private void startWeb(String link) {
+    Intent intent = new Intent(this, RWebView.class);
+    intent.putExtra("link", link);
+    startActivity(intent);
     }
 }
 
