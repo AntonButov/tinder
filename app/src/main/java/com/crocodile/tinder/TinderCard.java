@@ -44,23 +44,24 @@ public class TinderCard {
     private Profile mProfile;
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
+    MultiTransformation multi;
 
     public TinderCard(Context context, Profile profile, SwipePlaceHolderView swipeView) {
         mContext = context;
         mProfile = profile;
         mSwipeView = swipeView;
-    }
-
-    @Resolve
-    private void onResolved(){
-        MultiTransformation multi = new MultiTransformation(
+        multi = new MultiTransformation(
                 new BlurTransformation(mContext, 30),
                 new RoundedCornersTransformation(
                         mContext, Utils.dpToPx(7), 0,
                         RoundedCornersTransformation.CornerType.TOP));
+    }
 
+
+    @Resolve
+    private void onResolved(){
         Glide.with(mContext).load(mProfile.getImageUrl())
-           //     .transform(multi)
+                .transform(multi)
                 .into(profileImageView);
         nameAgeTxt.setText(mProfile.getName() + ", " + mProfile.getAge());
         locationNameTxt.setText(mProfile.getLocation());
@@ -69,9 +70,10 @@ public class TinderCard {
     @SwipeHead
     private void onSwipeHeadCard() {
         Glide.with(mContext).load(mProfile.getImageUrl())
-        //        .transform(new RoundedCornersTransformation(
-      //                  mContext, Utils.dpToPx(7), 0,
-      //                  RoundedCornersTransformation.CornerType.TOP))
+          //      .transform(new RoundedCornersTransformation(
+          //              mContext, Utils.dpToPx(7), 0,
+          //              RoundedCornersTransformation.CornerType.TOP))
+          //      .transform(multi)
                 .into(profileImageView);
         cardView.invalidate();
     }
